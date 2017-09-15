@@ -1,7 +1,7 @@
 import sys
 
-list1 = ["for","if","while","else if","else","int","float","void","char"]
-list2 = ["int","float","void","char"]
+list1 = ["for","if","while","else if","else","switch","int","float","void","char","long","short"]
+list2 = ["int","float","void","char","long","short"]
 
 myfile =open("example.c") # Give the input c file here
 
@@ -26,7 +26,8 @@ def myfunc3(num1,key1):
     nb = True
     hp =True
     bt= 1 
-    count1 = 0 
+    count1 = 0
+    count2 = 0
     myfile3 = open('example.c', 'r').readlines()[num1:]
     if key1 in list2:
        bt =3
@@ -39,19 +40,22 @@ def myfunc3(num1,key1):
             if not nb and hp and i4 =='{':
                bt =1 
                break
+            else:
+               if not bt:
+                  print  
                
     else:        
         for i3 in myfile3:
             for i4 in i3:
                 if i4 =='(':
-                   nb =False
-                elif i4 ==')':
-                     nb = True
+                   count2+=1
+                elif i4 ==')':  
+                     count2-=1
                 elif i4 =='{':
                      hp =False
-                if not nb and i4 ==';':
+                if not count2==0 and i4 ==';':
                    count1+=1  
-                if nb and hp and i4 ==';':
+                if count2==0 and hp and i4 ==';':
                    bt = 0
                    break
             if bt==0:
@@ -62,7 +66,7 @@ def myfunc3(num1,key1):
        myfunc2(num1,key1)
        
     elif bt==0:
-        print "\n *****************************************NEW BLOCK******************************************************************"
+        print "\n*****************************************NEW BLOCK******************************************************************"
         myfunc4(num1,key1,count1+1)
            
  
@@ -98,5 +102,3 @@ def myfunc(myfile):
                    myfunc3(count-1,j)
                    
 myfunc(myfile)
-
-
