@@ -1,0 +1,7 @@
+{"Application":
+[
+{ "Technology": "C","Extn":[".c",".h"]},
+{"Technology": "C++","Extn":[".mp3",".cpp",".h",".cbp",".depend"]},
+{"Technology": "Esql","Extn":[".c",".h"]}
+]
+}
